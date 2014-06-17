@@ -7,6 +7,7 @@ exports.getComponent = ->
 
   c.inPorts.add 'url',
     datatype: 'string'
+    description: 'AMQP server URL'
   c.outPorts.add 'connection',
     datatype: 'object'
   c.outPorts.add 'error',

@@ -34,7 +34,9 @@
   "noflo": {
     "icon": "tasks",
     "components": {
-      "Connect": "components/Connect.coffee"
+      "Connect": "components/Connect.coffee",
+      "PrepareQueue": "components/PrepareQueue.coffee",
+      "Publish": "components/Publish.coffee"
     }
   },
   "scripts": {
