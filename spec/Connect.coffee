@@ -2,7 +2,7 @@ noflo = require 'noflo'
 chai = require 'chai' unless chai
 Connect = require '../components/Connect.coffee'
 
-rabbitUrl = 'amqp://guest:guest@localhost:5672//'
+rabbitUrl = 'amqp://localhost'
 
 describe 'Connect component', ->
   c = null
