@@ -42,8 +42,33 @@ describe 'Publish component', ->
           ch.consume topic, (msg) ->
             ch.ack msg
             chai.expect(msg.content.toString()).to.equal message
+            ch.close()
             done()
       channel.send chan
       queue.send topic
       payload.send message
+      payload.disconnect()
+
+  describe 'sending multiple messages to a queue', ->
+    it 'should result in a receivable messages', (done) ->
+      expected = [
+        'foo'
+        'bar'
+        'baz'
+      ]
+      conn.createChannel (err, ch) ->
+        ch.assertQueue topic,
+          durable: true
+        , (err) ->
+          ch.consume topic, (msg) ->
+            ch.ack msg
+            chai.expect(msg.content.toString()).to.equal expected.shift()
+            return if expected.length
+            ch.close()
+            done()
+      channel.send chan
+      queue.send topic
+      payload.send 'foo'
+      payload.send 'bar'
+      payload.send 'baz'
       payload.disconnect()
