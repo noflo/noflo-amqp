@@ -24,6 +24,7 @@ describe 'Consume component', ->
     amqp.connect rabbitUrl, (err, con) ->
       conn = con
       conn.createChannel (err, ch) ->
+        chan = ch
         ch.assertQueue topic,
           durable: true
         , (err) ->
@@ -41,7 +42,7 @@ describe 'Consume component', ->
         groups.push group
       message.on 'data', (data) ->
         chai.expect(data).to.equal payload
-        ch.ack
+        chan.ack
           fields:
             deliveryTag: groups[0]
         done()
@@ -68,7 +69,7 @@ describe 'Consume component', ->
       message.on 'data', (data) ->
         chai.expect(data).to.equal expected.shift()
         chai.expect(groups[0]).to.be.a 'number'
-        ch.ack
+        chan.ack
           fields:
             deliveryTag: groups[0]
         return if expected.length
