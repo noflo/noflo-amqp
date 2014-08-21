@@ -18,7 +18,7 @@
     }
   ],
   "dependencies": {
-    "noflo": "~0.5.4",
+    "noflo": "~0.5.9",
     "amqplib": "^0.2.0"
   },
   "devDependencies": {
@@ -34,8 +34,10 @@
   "noflo": {
     "icon": "tasks",
     "components": {
+      "Ack": "components/Ack.coffee",
       "Connect": "components/Connect.coffee",
       "Consume": "components/Consume.coffee",
+      "Nack": "components/Nack.coffee",
       "PrepareQueue": "components/PrepareQueue.coffee",
       "Publish": "components/Publish.coffee"
     }

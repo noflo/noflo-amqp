@@ -36,9 +36,17 @@ describe 'Consume component', ->
   describe 'receiving a message', ->
     it 'should send the message as a packet', (done) ->
       payload = "Hello NoFlo, this is message #{Math.random()}"
+      groups = []
+      message.on 'begingroup', (group) ->
+        groups.push group
       message.on 'data', (data) ->
         chai.expect(data).to.equal payload
+        ch.ack
+          fields:
+            deliveryTag: groups[0]
         done()
+      message.on 'endgroup', ->
+        groups.pop()
       channel.send chan
       queue.send topic
       conn.createChannel (err, ch) ->
@@ -54,10 +62,19 @@ describe 'Consume component', ->
         'bar'
         'baz'
       ]
+      groups = []
+      message.on 'begingroup', (group) ->
+        groups.push group
       message.on 'data', (data) ->
         chai.expect(data).to.equal expected.shift()
+        chai.expect(groups[0]).to.be.a 'number'
+        ch.ack
+          fields:
+            deliveryTag: groups[0]
         return if expected.length
         done()
+      message.on 'endgroup', ->
+        groups.pop()
       channel.send chan
       queue.send topic
       conn.createChannel (err, ch) ->
