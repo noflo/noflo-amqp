@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "noflo": "0.5.14",
-    "amqplib": "0.4.0"
+    "amqplib": "0.4.2"
   },
   "devDependencies": {
     "grunt": "0.4.5",
