@@ -1,7 +1,15 @@
 language: node_js
 services:
-  - rabbitmq
+- rabbitmq
 node_js:
-  - 0.10
+- 4.6
 before_script:
-  - npm install -g grunt-cli
+- npm install -g grunt-cli
+deploy:
+  provider: npm
+  email: henri.bergius@iki.fi
+  api_key:
+    secure: N1JMD9Mvjl80T5tM7Hr2K1oI7n/hCg8N1MabmzTMLaz/u0F9f2hjFk9CSHZ/EOKeRTFwlwSUkEIFtarsmsb28A/xZpPJKjy5HAsF8gct0/gPNYo0B7++3+E99CH4Frf2+j57FW+G26KwRhM6aVutZFgB5ylPLwdKwQaLddu0pUk=
+  on:
+    tags: true
+    repo: noflo/noflo-amqp
