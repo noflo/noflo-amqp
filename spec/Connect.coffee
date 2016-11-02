@@ -43,4 +43,4 @@ describe 'Connect component', ->
       error.on 'data', (data) ->
         chai.expect(data).to.be.an.instanceOf Error
         done()
-      url.send 'amqp://localhost:123456'
+      url.send 'amqp://localhost:12345'
