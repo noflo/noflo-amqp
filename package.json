@@ -23,7 +23,7 @@
     "chai": "1.9.2",
     "mocha": "2.3.3",
     "grunt-contrib-watch": "0.6.1",
-    "grunt-noflo-manifest": "0.1.11"
+    "grunt-noflo-manifest": "0.1.12"
   },
   "keywords": [],
   "noflo": {
