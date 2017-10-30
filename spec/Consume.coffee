@@ -31,7 +31,6 @@ describe 'Consume component', ->
           chan = ch
           done()
   afterEach (done) ->
-    conn.close()
     c.shutdown done
 
   describe 'receiving a message', ->
