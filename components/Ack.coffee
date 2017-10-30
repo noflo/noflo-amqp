@@ -22,14 +22,14 @@ exports.getComponent = ->
     out: 'out'
     params: 'channel'
     forwardGroups: true
-  , (data, groups, out) ->
+    async: true
+  , (data, groups, out, callback) ->
     unless typeof groups[0] is 'number'
-      return c.error new Error 'No deliveryTag found'
+      return callback new Error 'No deliveryTag found'
 
     c.params.channel.ack
       fields:
         deliveryTag: groups[0]
 
     out.send data
-
-  c
+    do callback
