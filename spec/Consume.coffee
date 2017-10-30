@@ -30,9 +30,9 @@ describe 'Consume component', ->
         , (err) ->
           chan = ch
           done()
-  afterEach ->
-    c.shutdown()
+  afterEach (done) ->
     conn.close()
+    c.shutdown done
 
   describe 'receiving a message', ->
     it 'should send the message as a packet', (done) ->
