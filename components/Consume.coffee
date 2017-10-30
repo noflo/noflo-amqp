@@ -12,10 +12,10 @@ exports.getComponent = ->
     description: 'Message queue name'
   c.outPorts.add 'message',
     datatype: 'string'
-  c.outPorts.add 'error',
+  c.outPorts.add 'channel',
     datatype: 'object'
     required: false
-  c.outPorts.add 'channel',
+  c.outPorts.add 'error',
     datatype: 'object'
     required: false
   c.consumers = {}
