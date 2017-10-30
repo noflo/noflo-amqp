@@ -10,13 +10,6 @@ exports.getComponent = ->
   c.inPorts.add 'queue',
     datatype: 'string'
     description: 'Message queue name'
-      c.channel.consume payload, (msg) ->
-        c.outPorts.message.beginGroup msg.fields.deliveryTag
-        c.outPorts.message.beginGroup payload
-        c.outPorts.message.send msg.content.toString()
-        c.outPorts.message.endGroup()
-        c.outPorts.message.endGroup()
-
   c.outPorts.add 'message',
     datatype: 'string'
   c.outPorts.add 'error',

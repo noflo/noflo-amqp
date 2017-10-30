@@ -15,7 +15,6 @@ exports.getComponent = ->
   c.inPorts.add 'payload',
     datatype: 'string'
     description: 'Message to send'
-    datatype: 'string'
   c.outPorts.add 'error',
     datatype: 'object'
     required: false
