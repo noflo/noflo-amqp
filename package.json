@@ -23,20 +23,11 @@
     "grunt-mocha-test": "^0.13.2",
     "chai": "^4.0.0",
     "mocha": "^4.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-noflo-manifest": "^0.1.12"
+    "grunt-contrib-watch": "^1.0.0"
   },
-  "keywords": [],
+  "keywords": ["noflo"],
   "noflo": {
-    "icon": "tasks",
-    "components": {
-      "Ack": "components/Ack.coffee",
-      "Connect": "components/Connect.coffee",
-      "Consume": "components/Consume.coffee",
-      "Nack": "components/Nack.coffee",
-      "PrepareQueue": "components/PrepareQueue.coffee",
-      "Publish": "components/Publish.coffee"
-    }
+    "icon": "tasks"
   },
   "scripts": {
     "test": "grunt test"
