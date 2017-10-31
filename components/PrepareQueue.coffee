@@ -14,9 +14,6 @@ exports.getComponent = ->
     datatype: 'boolean'
     description: 'Whether to persist the messages in the queue'
     default: false
-    process: (event, payload) ->
-      c.durable = payload if event is 'data'
-
   c.outPorts.add 'channel',
     datatype: 'object'
   c.outPorts.add 'error',
@@ -28,19 +25,19 @@ exports.getComponent = ->
       'connection'
       'queue'
     ]
+    params: ['durable']
     out: 'channel'
     async: true
     forwardGroups: true
   , (data, groups, out, callback) ->
+    durable = c.params?.durable or false
     data.connection.createChannel (err, channel) ->
       return callback err if err
       channel.assertQueue data.queue,
-        durable: c.durable
+        durable: durable
       , (err) ->
         return callback err if err
         out.beginGroup data.queue
         out.send channel
         out.endGroup()
         callback()
-
-  c

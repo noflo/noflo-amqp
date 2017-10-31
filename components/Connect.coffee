@@ -26,5 +26,3 @@ exports.getComponent = ->
       out.send conn
       out.endGroup()
       callback()
-
-  c
