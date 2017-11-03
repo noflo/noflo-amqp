@@ -13,19 +13,21 @@
   },
   "license": "MIT",
   "dependencies": {
-    "noflo": "0.x >= 0.8",
+    "noflo": "^1.0.0",
     "amqplib": "~0.5.0"
   },
   "devDependencies": {
-    "coffee-script": "^1.11.1",
+    "chai": "^4.0.0",
+    "coffeescript": "^2.0.2",
     "grunt": "^1.0.1",
     "grunt-coffeelint": "^0.0.16",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-mocha-test": "^0.13.2",
-    "chai": "^4.0.0",
-    "mocha": "^4.0.0",
-    "grunt-contrib-watch": "^1.0.0"
+    "mocha": "^4.0.0"
   },
-  "keywords": ["noflo"],
+  "keywords": [
+    "noflo"
+  ],
   "noflo": {
     "icon": "tasks"
   },
