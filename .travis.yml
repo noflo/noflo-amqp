@@ -3,6 +3,7 @@ services:
 - rabbitmq
 node_js:
 - 6
+- 10
 before_script:
 - npm install -g grunt-cli
 deploy:
